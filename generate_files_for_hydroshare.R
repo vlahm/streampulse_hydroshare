@@ -5,7 +5,6 @@
 # 4. run this script to generate hydroshare files
 # 5. upload those files, making sure they are registered as new versions of previously uploaded files
 
-
 library(tidyverse)
 # remotes::install_github("EDIorg/EMLassemblyline")
 library(EMLassemblyline)
@@ -30,90 +29,106 @@ file.remove("model_input_summary_data.csv") # not worth including
 # template_table_attributes(md, wd, 'daily_model_results.csv')
 # template_table_attributes(md, wd, 'grab_data.csv')
 template_table_attributes(md, wd, "model_summary_data.csv")
+at <- function() {
+    z <- 1
+    browser()
+    print(z)
+    y <- 2
+    print(y)
+    x <- 3
+    print(x)
+}
+for(i in chili){
+    make chili %>%
+}
+debugonce(at)
+at()
+xx <- 1
+# read_csv("grab_data.csv") %>%
+#     mutate(
+#         unit = case_match(
+#             variable,
+#             "TOC" ~ "ppm",
+#             "TN" ~ "ppm",
+#             "TP" ~ "ppm",
+#             "TDN" ~ "mg/L",
+#             "TDP" ~ "mg/L",
+#             "SRP" ~ "mg/L",
+#             "DOC" ~ "ppm",
+#             "DIC" ~ "ppm",
+#             "TSS" ~ "ppm",
+#             "fDOM" ~ "ppb",
+#             "Carbon dioxide" ~ "ppm",
+#             "CO2" ~ "ppm",
+#             "Methane" ~ "ug/L",
+#             "CH4" ~ "ug/L",
+#             "Nitrous oxide" ~ "ug/L",
+#             "N2O" ~ "ug/L",
+#             "DO" ~ "mg/L",
+#             "DO Sat" ~ "%",
+#             "DO_Sat" ~ "%",
+#             "Chlorophyll-a" ~ "mg/L",
+#             "Chl-a" ~ "mg/L",
+#             "Alkalinity" ~ "meq/L",
+#             "pH" ~ "pH units",
+#             "Spec Cond" ~ "mS/cm",
+#             "Spec_Cond" ~ "mS/cm",
+#             "Turbidity" ~ "NTU",
+#             "Light Atten." ~ "1/m",
+#             "Light_Atten" ~ "1/m",
+#             "Illuminance" ~ "lux",
+#             "PAR" ~ "W/m^2",
+#             "UV Absorbance" ~ "1/cm",
+#             "UV_Absorbance" ~ "1/cm",
+#             "Canopy Cover" ~ "LAI",
+#             "Canopy_Cover" ~ "LAI",
+#             "Width" ~ "m",
+#             "Depth" ~ "m",
+#             "Distance" ~ "m",
+#             "Discharge" ~ "m^3/s",
+#             "k" ~ "1/min",
+#             "Water Temp" ~ "C",
+#             "Water_Temp" ~ "C",
+#             "Air Temp" ~ "C",
+#             "Air_Temp" ~ "C",
+#             "Water Pres" ~ "kPa",
+#             "Water_Pres" ~ "kPa",
+#             "Air Pres" ~ "kPa",
+#             "Air_Pres" ~ "kPa"
+#         ),
+#         unit = if_else(is.na(unit), "mole", unit)
+#     ) %>%
+#     relocate("unit", .after = "value") %>%
+#     write_csv("grab_data.csv")
 
-read_csv("grab_data.csv") %>%
-    mutate(
-        unit = case_match(
-            variable,
-            "TOC" ~ "ppm",
-            "TN" ~ "ppm",
-            "TP" ~ "ppm",
-            "TDN" ~ "mg/L",
-            "TDP" ~ "mg/L",
-            "SRP" ~ "mg/L",
-            "DOC" ~ "ppm",
-            "DIC" ~ "ppm",
-            "TSS" ~ "ppm",
-            "fDOM" ~ "ppb",
-            "Carbon dioxide" ~ "ppm",
-            "CO2" ~ "ppm",
-            "Methane" ~ "ug/L",
-            "CH4" ~ "ug/L",
-            "Nitrous oxide" ~ "ug/L",
-            "N2O" ~ "ug/L",
-            "DO" ~ "mg/L",
-            "DO Sat" ~ "%",
-            "DO_Sat" ~ "%",
-            "Chlorophyll-a" ~ "mg/L",
-            "Chl-a" ~ "mg/L",
-            "Alkalinity" ~ "meq/L",
-            "pH" ~ "pH units",
-            "Spec Cond" ~ "mS/cm",
-            "Spec_Cond" ~ "mS/cm",
-            "Turbidity" ~ "NTU",
-            "Light Atten." ~ "1/m",
-            "Light_Atten" ~ "1/m",
-            "Illuminance" ~ "lux",
-            "PAR" ~ "W/m^2",
-            "UV Absorbance" ~ "1/cm",
-            "UV_Absorbance" ~ "1/cm",
-            "Canopy Cover" ~ "LAI",
-            "Canopy_Cover" ~ "LAI",
-            "Width" ~ "m",
-            "Depth" ~ "m",
-            "Distance" ~ "m",
-            "Discharge" ~ "m^3/s",
-            "k" ~ "1/min",
-            "Water Temp" ~ "C",
-            "Water_Temp" ~ "C",
-            "Air Temp" ~ "C",
-            "Air_Temp" ~ "C",
-            "Water Pres" ~ "kPa",
-            "Water_Pres" ~ "kPa",
-            "Air Pres" ~ "kPa",
-            "Air_Pres" ~ "kPa"
-        ),
-        unit = if_else(is.na(unit), "mole", unit)
-    ) %>%
-    relocate("unit", .after = "value") %>%
-    write_csv("grab_data.csv")
+# read_csv("model_summary_data.csv") %>%
+#     select(
+#         -requested_variables, -year, -engine, -used_rating_curve,
+#         -GPP_95CI, -ER_95CI, -current_best
+#     ) %>%
+#     write_csv("model_summary_data.csv")
 
-read_csv("model_summary_data.csv") %>%
-    select(
-        -requested_variables, -year, -engine, -used_rating_curve,
-        -GPP_95CI, -ER_95CI, -current_best
-    ) %>%
-    write_csv("model_summary_data.csv")
+# sp_data <- purrr::map_dfr(
+#     list.files(pattern = "^sp_data"),
+#     read_csv
+# )
 
-    sp_data <- purrr::map_dfr(
-        list.files(pattern = "^sp_data"),
-        read_csv
-    )
+# dir.create("inputdata_streampulse", showWarnings = FALSE)
 
-    for (region in unique(sp_data$regionID)) {
-        sp_data %>%
-            filter(regionID == !!region) %>%
-            arrange(siteID, dateTimeUTC) %>%
-            write_csv(glue("inputdata_streampulse_region", region, ".csv"))
-    }
+# for (region in unique(sp_data$regionID)) {
+#     sp_data %>%
+#         filter(regionID == !!region) %>%
+#         arrange(siteID, dateTimeUTC) %>%
+#         write_csv(glue("inputdata_streampulse/inputdata_streampulse_region", region, ".csv"))
+# }
 
-    # neon_data <- purrr::map_dfr(list.files(pattern = '^neon'),
-    #                             read_csv)
-    #
-    # for(site in unique(neon_data$siteID)){
-    #     neon_data <- neon_data %>% arrange
-    # }
+# # neon_data <- purrr::map_dfr(list.files(pattern = '^neon'),
+# #                             read_csv)
+# #
+# # for(site in unique(neon_data$siteID)){
+# #     neon_data <- neon_data %>% arrange
+# # }
 
-# feather::write_feather(neon_data, "../neon_combined.feather")
+# # feather::write_feather(neon_data, "../neon_combined.feather")
 
-file.remove("../metadata/custom_units.txt")
+# file.remove("../metadata/custom_units.txt")
