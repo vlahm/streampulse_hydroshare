@@ -1,0 +1,8 @@
+metabolism estimates for for 356 U.S. rivers, 2007-2017 (Powell Center Synthesis):
+https://www.sciencebase.gov/catalog/item/59bff507e4b091459a5e0982
+
+follow-up metabolism for 59 of those same rivers, 2008-2021:
+https://datadryad.org/dataset/doi:10.5061/dryad.bcc2fqzj2
+
+metabolism estimates for NEON sites:
+https://figshare.com/articles/dataset/Ecosystem_metabolism_estimates_from_the_National_Ecological_Observatory_Network_NEON_stream_and_river_sites/28074452
